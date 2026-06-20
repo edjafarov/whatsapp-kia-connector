@@ -4,7 +4,10 @@
   "description": "WhatsApp connector for alpha-cent / KIAgent (Baileys-based, self-contained).",
   "license": "MIT",
   "private": false,
-  "files": ["dist", "manifest.json"],
+  "files": [
+    "dist",
+    "manifest.json"
+  ],
   "scripts": {
     "build": "node build.mjs",
     "typecheck": "tsc --noEmit",
@@ -18,6 +21,7 @@
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.8",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.0",
     "better-sqlite3": "^11.0.0",
@@ -29,6 +33,15 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
-    "testMatch": ["<rootDir>/src/**/__tests__/**/*.test.ts"]
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.test.ts"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "node_modules/@whiskeysockets/baileys/.+\\.js$": "<rootDir>/jest/esm-cjs-transformer.cjs"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@whiskeysockets/baileys)/)"
+    ]
   }
 }
