@@ -46,22 +46,22 @@ URL and the integrity hash go in **two separate fields** (the hash is not a `#`
 fragment on the URL).
 
 1. In the app: **Add a source → Install connector…**
-2. **npm name or tarball URL** — paste the [release](https://github.com/edjafarov/whatsapp-kia-connector/releases/tag/v1.0.0) asset URL:
+2. **npm name or tarball URL** — paste the [release](https://github.com/edjafarov/whatsapp-kia-connector/releases/tag/v1.0.1) asset URL:
 
    ```
-   https://github.com/edjafarov/whatsapp-kia-connector/releases/download/v1.0.0/whatsapp-kia-connector-1.0.0.tgz
+   https://github.com/edjafarov/whatsapp-kia-connector/releases/download/v1.0.1/whatsapp-kia-connector-1.0.1.tgz
    ```
 3. **integrity hash (optional, recommended)** — paste the published SRI into the second field to pin it:
 
    ```
-   sha512-bBOBuTJ1rp3SWohKj98jhqNugNIeeffhNj0GXQBeAEmcb1LC+JuiEgLczXUUP3NV3pSZermj2wMgjdQmCRi7Hw==
+   sha512-Sso0nPJ3LCiZJZG3EgwMZMwfhGZLcWw73mj9t2qo1W11RrfFAjWkBFCKr24bYpg1xP5GPxmSMkr2xjP4PmUiJg==
    ```
 
    Verify it yourself against the asset the app will download (must print the
    string above verbatim):
 
    ```bash
-   curl -sL https://github.com/edjafarov/whatsapp-kia-connector/releases/download/v1.0.0/whatsapp-kia-connector-1.0.0.tgz \
+   curl -sL https://github.com/edjafarov/whatsapp-kia-connector/releases/download/v1.0.1/whatsapp-kia-connector-1.0.1.tgz \
      | openssl dgst -sha512 -binary | { printf 'sha512-'; base64; }
    ```
 
@@ -80,7 +80,7 @@ A connector module runs **unsandboxed in the app's main process** — it has the
 npm install        # builds Baileys + better-sqlite3 (native) — first run takes a minute
 npm run build      # esbuild → dist/index.js (~7 MB, self-contained CJS)
 npm test           # typed harness + ported specs + standalone bundle-load guard
-npm run pack       # build + npm pack → whatsapp-kia-connector-1.0.0.tgz
+npm run pack       # build + npm pack → whatsapp-kia-connector-1.0.1.tgz
 ```
 
 `better-sqlite3` is a **test-only** dependency (the in-memory harness); it is not bundled. The four optional native media deps Baileys can lazy-load (`sharp`, `jimp`, `link-preview-js`, `audio-decode`) are externalized — the buffer-download path used here does not need them, and the `bundle-load` test proves the bundle requires cleanly with zero `node_modules` reachable.

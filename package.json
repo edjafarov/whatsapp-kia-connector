@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-kia-connector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WhatsApp connector for alpha-cent / KIAgent (Baileys-based, self-contained).",
   "license": "MIT",
   "private": false,
